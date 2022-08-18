@@ -14,24 +14,30 @@ const Menu = ({ path, setLogged }: MenuProps) => {
   const handleLogout = () => {
     setLogged(false);
     navigate("/login");
-  }
+  };
   return (
     <Styled.MenuContainer>
       <img src={logo} alt="logo" />
       <nav>
         <Styled.MenuItem active={path === "home"}>
-          <Styled.MenuItemButton active={path === "home"}>
+          <Styled.MenuItemButton
+            onClick={() => navigate("/")}
+            active={path === "home"}
+          >
             <HomeIcon />
           </Styled.MenuItemButton>
         </Styled.MenuItem>
         <Styled.MenuItem active={path === "settings"}>
-          <Styled.MenuItemButton active={path === "settings"}>
+          <Styled.MenuItemButton
+            onClick={() => navigate("/settings")}
+            active={path === "settings"}
+          >
             <SettingsIcon />
           </Styled.MenuItemButton>
         </Styled.MenuItem>
       </nav>
       <Styled.MenuItem logout>
-        <Styled.MenuItemButton onClick={() => navigate("/login")}>
+        <Styled.MenuItemButton onClick={handleLogout}>
           <LogoutIcon />
         </Styled.MenuItemButton>
       </Styled.MenuItem>

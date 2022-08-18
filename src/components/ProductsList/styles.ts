@@ -5,6 +5,12 @@ export const ProductsListContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
-  margin-top: 3rem;
   justify-content: center;
+  height: 40rem;
+  box-sizing: border-box;
+  overflow-y:scroll;
+  
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;

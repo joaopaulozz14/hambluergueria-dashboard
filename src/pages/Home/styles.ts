@@ -16,10 +16,10 @@ export const HomeContainer = styled.section`
   display: flex;
   background-color: #252836;
   color: white;
-  
+  box-sizing: border-box;
+ 
   section {
     width: 100%;
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;

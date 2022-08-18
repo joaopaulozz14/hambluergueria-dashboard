@@ -10,7 +10,7 @@ interface MenuButtonProps {
 }
 
 export const MenuContainer = styled.div`
-  width: 6.5rem;
+  min-width: 6.5rem;
   height: 100%;
   border-radius: 0px 16px 16px 0px;
   background-color: #1f1d2b;

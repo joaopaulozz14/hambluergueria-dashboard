@@ -20,7 +20,8 @@ export const CardContainer = styled.div<CardContainerProps>`
     padding-top: 2rem;
 
     box-sizing: border-box;
-    margin-top: 15px;
+  
+    margin-top: 50px;
 
     img { 
         width: 8rem;
