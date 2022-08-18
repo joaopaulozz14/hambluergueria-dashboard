@@ -2,7 +2,9 @@ import { Dispatch, SetStateAction } from "react";
 import Menu from "../../components/Menu";
 import { MarketIcon, InfoIcon, PromotionIcon } from "../../assets/icons";
 import * as Styled from "./styles";
-import SettingsProductCard from "../../components/SettingsProductCard/index"
+import SettingsProductCard from "../../components/SettingsProductCard/index";
+import { mockedProducts } from "../../mocks";
+import Button from "../../components/Button";
 interface SettingsProps {
   setLogged: Dispatch<SetStateAction<boolean>>;
 }
@@ -65,8 +67,14 @@ const Settings = ({ setLogged }: SettingsProps) => {
               <p>Adicionar item</p>
             </Styled.AddEditEntity>
           </Styled.EditEntityCard>
-          <SettingsProductCard />
+          {mockedProducts.map((element) => (
+            <SettingsProductCard product={element} key={element.id} />
+          ))}
         </Styled.EditEntitiesList>
+        <Styled.ConfirmationContainer>
+          <Button text="Cancelar" variant="cancel"/>
+          <Button text="Salvar mudanças"/>
+        </Styled.ConfirmationContainer>
       </Styled.EditEntitiesContainer>
     </Styled.SettingsContainer>
   );

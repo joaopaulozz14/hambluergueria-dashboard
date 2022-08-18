@@ -1,15 +1,22 @@
+import { EditIcon } from "../../assets/icons";
+import { Product } from "../../types";
 import * as Styled from "./styles";
 
-const SettingsProductCard = () => {
+interface product {
+  product: Product;
+}
+const SettingsProductCard = ({ product }: product) => {
   return (
     <Styled.SettingsProductCardContainer>
-      <img src="" alt="" />
-      <p></p>
+      <img src={product.image} alt={product.description} />
+      <h4>{product.name}</h4>
       <div>
-        <p>$2.29</p>
-        <p>20 Bowls</p>
+        <p>{product.price}</p>
       </div>
-      <button></button>
+      
+      <Styled.SettingsProductCardButton>
+      <EditIcon /> Editar Prato
+      </Styled.SettingsProductCardButton>
     </Styled.SettingsProductCardContainer>
   );
 };

@@ -124,7 +124,7 @@ export const EntitiesEditCategoriesButton = styled.button<ActiveButtonProps>`
     padding-bottom: 0.813rem;
     padding-top: 1rem;
     cursor: pointer;
-    ${active && 
+    ${active &&
     css`
       border-bottom: 1px solid ${theme.colors.primaryColor};
       color: ${theme.colors.primaryColor};
@@ -141,7 +141,12 @@ export const EditEntitiesList = styled.div`
     flex-wrap: wrap;
     padding: 1.5rem;
     box-sizing: border-box;
+    overflow-y: scroll;
 
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    gap: 1.5rem;
   `}
 `;
 
@@ -151,25 +156,30 @@ export const EditEntityCard = styled.div`
     height: 18.688rem;
     border: 1px dashed ${theme.colors.primaryColor};
     border-radius: 8px;
-    margin: 1rem 0 0 1rem;
+    margin: 1rem 1rem 0 1rem;
   `}
 `;
 
 export const AddEditEntity = styled.div`
   ${({ theme }) => css`
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center; 
-      justify-content: center;
-      color: ${theme.colors.primaryColor};
-    
-      p{
-        font-weight: 600;
-        font-family: ${theme.constants.bodyFontFamily};
-        font-size: 16px;
-        margin-top: 1.5rem;
-      }
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: ${theme.colors.primaryColor};
+
+    p {
+      font-weight: 600;
+      font-family: ${theme.constants.bodyFontFamily};
+      font-size: 16px;
+      margin-top: 1.5rem;
+    }
   `}
 `;
 
+export const ConfirmationContainer = styled.div`
+  margin: 3rem 0.125rem 1.5rem 2.5rem;
+  display: flex;
+  gap: 0.5rem;
+`;
