@@ -25,3 +25,24 @@ interface StyledInputProps {
       `}
     `}
   `;
+
+export const ErrorMessage = styled.p`
+  ${({ theme }) => css`
+    color: red;
+    align-self: center;
+    font-size: small;
+    height: 1rem;
+  `}
+`;
+
+export const ModalOverlay = styled.div`
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 1;
+  background-color: rgb(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+
+  justify-content: center;
+`;

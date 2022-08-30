@@ -3,25 +3,28 @@ import { SearchIcon } from "../../assets/icons";
 import Menu from "../../components/Menu";
 import * as Styled from "./styles";
 import { DateTime } from "luxon";
-import { mockedProducts } from "../../mocks";
 import ProductsList from "../../components/ProductsList";
 import { mockedCategories } from "../../mocks";
-import { Dispatch, SetStateAction, useState } from "react";
+import { useEffect, useState } from "react";
 import { Category, Product } from "../../types";
 import OrderDetails from "../../components/OrderDetails";
+import { useProducts } from "../../contexts/products";
+import { useCategories } from "../../contexts/categories";
 
-interface HomeProps {
-  setLogged: Dispatch<SetStateAction<boolean>>;
-}
-
-const Home = ({ setLogged }: HomeProps) => {
+const Home = () => {
+  const { products } = useProducts();
+  const { categories } = useCategories();
   const [selectedCategory, setSelectedCategory] = useState<Category>(
-    mockedCategories[0]
+    //categories[0] || ({} as Category)
+    categories[0]
   );
 
+  useEffect(() => {
+    setSelectedCategory(categories[0]);
+  }, [categories]);
   //O filter recebe uma função anônima que deve retornar um boolean;
-  const filteredProducts: Product[] = mockedProducts.filter(
-    (element) => element.categoryId === selectedCategory.id
+  const filteredProducts: Product[] = products.filter(
+    (element) => selectedCategory && element.categoryId === selectedCategory.id
   );
 
   const actualDate = DateTime.now();
@@ -31,7 +34,7 @@ const Home = ({ setLogged }: HomeProps) => {
   const formatedDate = `${actualDate.weekdayShort}, ${actualDate.day} ${actualDate.monthLong} ${actualDate.year}`;
   return (
     <Styled.HomeContainer>
-      <Menu path="home" setLogged={setLogged} />
+      <Menu path="home" />
       <Styled.HomeContentContainer>
         <Styled.HomeContentHeader>
           <Styled.TitleContainer>
@@ -45,12 +48,15 @@ const Home = ({ setLogged }: HomeProps) => {
         </Styled.HomeContentHeader>
         <section>
           <Styled.CategoriesNavigationBar>
-            {mockedCategories.map((element) => {
+            {categories.map((element) => {
               return (
                 <Styled.CategoriesNavigationButton
                   //Poderia ser selecionado outros parâmetros em outras situações, porque está sendo passado a Category inteira no map.
-                  active={element.name === selectedCategory.name}
+                  active={
+                    selectedCategory && element.name === selectedCategory.name
+                  }
                   onClick={() => setSelectedCategory(element)}
+                  key={element.id}
                 >
                   {element.name}
                 </Styled.CategoriesNavigationButton>

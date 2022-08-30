@@ -1,17 +1,16 @@
 import styled, { css } from "styled-components";
 import backgroundPattern from "../../assets/logo_patterns/food-pattern.jpg";
 
-
 export const LoginPageContainer = styled.div`
-    width: 100%;
-    height: 100vh;
-    background-image: url(${backgroundPattern});
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-image: url(${backgroundPattern});
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
-export const LoginFormContainer = styled.div`
+export const LoginFormContainer = styled.form`
   ${({ theme }) => css`
     width: 24rem;
     height: 28.875rem;
@@ -55,3 +54,4 @@ export const LoginLogoContainer = styled.div`
     }
   `}
 `;
+

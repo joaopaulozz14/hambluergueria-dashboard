@@ -1,10 +1,9 @@
 import { Product } from "../../types";
 import * as Styled from "./styles";
-import { mockedProducts } from "../../mocks";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import {TrashIcon} from "../../assets/icons"
-import Input from "../Input";
+import { TrashIcon } from "../../assets/icons";
+import { StyledInput } from "../../assets/styles/globalStyles";
 interface CheckoutCardProps {
   product: Product;
 }
@@ -27,15 +26,17 @@ const CheckoutCard = ({ product }: CheckoutCardProps) => {
           value={quantity}
           onChange={(event) => setQuantity(Number(event.target.value))}
         />
-        <span>R$ {(product.price * quantity).toFixed(2) }</span>
+        <span>R$ {(product.price * quantity).toFixed(2)}</span>
       </Styled.CheckoutCardHeader>
       <Styled.CheckoutCardFooter>
-        <Input
+        <StyledInput
           value={description}
           onChange={(event) => setDescription(event.target.value)}
         />
-        <Styled.RemoveProductButton onClick={() => toast.error("Sessão em desenvolvimento")}>
-            <TrashIcon />
+        <Styled.RemoveProductButton
+          onClick={() => toast.error("Sessão em desenvolvimento")}
+        >
+          <TrashIcon />
         </Styled.RemoveProductButton>
       </Styled.CheckoutCardFooter>
     </Styled.CheckoutCardContainer>
